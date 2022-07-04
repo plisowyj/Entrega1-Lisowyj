@@ -3,7 +3,7 @@ from django.template import loader
 from .models import People, People_phones
 
 
-def index(request):
+def findex(request):
   myfamily = People.objects.all().values()
   familyphones = People_phones.objects.all().values()
 
