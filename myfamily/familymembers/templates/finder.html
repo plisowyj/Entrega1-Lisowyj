@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Buscador</h1>
+
+    </div>
+</header>
+<!-- buscador Section-->
+<section class="page-section portfolio" id="Buscador">
+    <div class="container">
+        <!-- familiares Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Búsqueda</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <form class="row g-3" action="" method="POST">
+            {% csrf_token %}
+            <select class="form-select " aria-label="Default select example" id="pFind" name="pFind">
+                <option selected>Seleccione un criterio de búsqueda</option>
+                <option value="1">Familiar (Nombre)</option>
+                <option value="2">Telefono (Número)</option>
+                <option value="3">Domicilio (Calle)</option>
+            </select>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Criterio de búsqueda</label>
+                <input type="text" class="form-control text-uppercase" id="pCriterio" name="pCriterio" placeholder="Escriba su texto de búsqueda aquí">
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success mb-3">Buscar</button>
+
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-info" href="{% url 'findex' %}" role="button">Volver</a>
+            
+            </div>
+            
+            
+        </form>
+        <p></p>
+        {% if miFormulario %}
+            {% if p %}
+            <table class="table text-uppercase">
+                <tbody>
+                    <thead>
+                        <tr>
+                    
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">N° Documento</th>
+                            <th scope="col">Fecha Nacimiento</th>
+                        </tr>
+                    </thead>
+                    {% for x in miFormulario %}
+                    
+                        <tr>
+                            <td scope="row">{{ x.id }}</td>
+                            <td>{{ x.firstname }}</td>
+                            <td>{{ x.lastname }}</td>
+                            <td>{{ x.identity }}</td>
+                            <td>{{ x.datebirth }}</td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+            {% if t %}
+            <table class="table text-uppercase">
+                <tbody>
+                    <thead>
+                        <tr>
+                            
+                            <th scope="col">Familiar</th>
+                            <th scope="col">Número Teléfono</th>
+                            
+                        </tr>
+                    </thead>
+                    {% for x in miFormulario %}
+            
+                    <tr>
+                        <td>{{ x.id_people }}</td>
+                        <td>{{ x.phonenumber }}</td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+            {% if d %}
+            <table class="table text-uppercase">
+                <tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">Familiar</th>
+                            <th scope="col">Domicilio</th>
+                            <th scope="col">Tipo</th>
+                            
+                        </tr>
+                    </thead>
+                    {% for x in miFormulario %}
+            
+                    <tr>
+                        <td>{{ x.id_people }}</td>
+                        <td>{{ x.address }}</td>
+                        <td>{{ x.type }}</td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        {% else %}
+           {% if label %} 
+                No se encontraron resultados...
+           {% endif %}
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}
