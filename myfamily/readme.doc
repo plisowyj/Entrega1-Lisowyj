@@ -1,0 +1,59 @@
+MVT_FINAL PRJ 
+
+Objetivo:
+- desarrollar un sitio WEB Django MVT
+- el sitio incluye:
+	* Herencia HTML
+	* 3 clases en models
+	* Insercion de datos a clases models
+	* formulario de Busqueda
+
+
+Vista del INDEX del sitio
+1- ir a Busquedas
+2- ver grilla Familiares
+3- ver grilla Teléfonos Familiares
+4- ver grilla Domicilios Familiares
+
+
+Cada “Grilla” muestra en su parte inferior, el boton para agregar nuevos registros:
+
+
+Dentro de cada pantalla de Alta(agregar): deberán completarse los datos y Confirmar. Si se cancela se regresa al INDEX.
+ 
+
+
+Vista del pie de página:
+ 
+Agregar Familiar:
+
+
+Agregar Telefono:
+
+
+Agregar Domicilio:
+
+Busquedas:
+
+1- permite realizar la busqueda según el criterio seleccionado
+2- volver al Index
+
+
+Criterios de busqueda:
+
+El texto de busqueda funciona buscando coincidencia como con un LIKE % de SQL.
+
+Cuando no hayan resultados, se la pantalla se verá de la siguiente forma:
+
+
+
+Ejemplos de Busqueda:
+
+1- Familiar + “A”
+
+
+2- Telefono + “112175”
+
+
+3- Domicilio + “PAU”
+
