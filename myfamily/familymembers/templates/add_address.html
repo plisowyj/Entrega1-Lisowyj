@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% if miFormulario.errors %}
+<p style="color: red;">Hay datos ingresados de manera incorrecta, revisar.</p>
+{% endif %}
+
+{% block cuerpo %}
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Agregando Domicilio</h1>
+
+    </div>
+</header>
+<!-- Domicilios Section-->
+<section class="page-section portfolio" id="Domicilios">
+    <div class="container">
+        <!-- Domicilio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Domicilio</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <form class="row g-3" action="" method="post">
+            {% csrf_token %}
+
+            {{ miFormulario.as_table }}
+
+            <h6>* Datos Requeridos</h6>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success mb-3">Confirmar</button>
+
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-danger" href="{% url 'findex' %}" role="button">Cancelar</a>
+            </div>
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}
